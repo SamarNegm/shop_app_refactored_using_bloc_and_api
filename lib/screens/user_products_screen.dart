@@ -5,7 +5,6 @@ import 'package:flutter_shop_app_refactored/screens/profil.dart';
 import 'package:provider/provider.dart';
 
 import './edit_product_screen.dart';
-import '../providers/products.dart';
 import '../widgets/app_drawer.dart';
 
 class UserProductsScreen extends StatefulWidget {

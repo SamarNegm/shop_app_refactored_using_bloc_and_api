@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_shop_app_refactored/providers/products.dart';
 import 'package:flutter_shop_app_refactored/screens/edit_product_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -40,7 +39,7 @@ class userProductItem2 extends StatelessWidget {
                 onPressed: () async {
                   print('id is ' + id);
 
-                  var productsData ;//TODO INITIALIZE
+                  var productsData; //TODO INITIALIZE
 
                   print('poddata len' + productsData.length.toString());
                   Navigator.of(context)
@@ -51,11 +50,11 @@ class userProductItem2 extends StatelessWidget {
               IconButton(
                 icon: Icon(Icons.delete),
                 onPressed: () async {
-                 //TODO DELETE
-                    Scaffold.of(context).showSnackBar(SnackBar(
-                      content:
-                          Text('some thing went wrong cant delete the product'),
-                    ));
+                  //TODO DELETE
+                  Scaffold.of(context).showSnackBar(SnackBar(
+                    content:
+                        Text('some thing went wrong cant delete the product'),
+                  ));
 
                   print('done@@@@@@@@@@@@@');
                 },

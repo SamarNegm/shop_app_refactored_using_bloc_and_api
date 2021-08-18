@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../screens/edit_product_screen.dart';
-import '../providers/products.dart';
 
 class UserProductItem extends StatelessWidget {
   final String id;
@@ -25,24 +24,24 @@ class UserProductItem extends StatelessWidget {
             IconButton(
               icon: Icon(Icons.edit),
               onPressed: () {
-                Navigator.of(context).pushNamed(EditProductScreen.routeName, arguments: id);
+                Navigator.of(context)
+                    .pushNamed(EditProductScreen.routeName, arguments: id);
               },
               color: Theme.of(context).primaryColor,
             ),
             IconButton(
               icon: Icon(Icons.delete),
               onPressed: () async {
-             {
-                 print('i got your error');
-                 Scaffold.of(context).showSnackBar(
-                 SnackBar (
-                   content: Text('some thing went wrong cant delete the product'),
-                 ));
-               }
+                {
+                  print('i got your error');
+                  Scaffold.of(context).showSnackBar(SnackBar(
+                    content:
+                        Text('some thing went wrong cant delete the product'),
+                  ));
+                }
 
-               ;
-               print('done@@@@@@@@@@@@@');
-
+                ;
+                print('done@@@@@@@@@@@@@');
               },
               color: Theme.of(context).errorColor,
             ),

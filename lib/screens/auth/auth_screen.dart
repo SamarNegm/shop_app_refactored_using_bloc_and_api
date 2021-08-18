@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_shop_app_refactored/models/http_exception.dart';
 import 'package:flutter_shop_app_refactored/models/users.dart';
-import 'package:flutter_shop_app_refactored/providers/Users.dart';
-import 'package:flutter_shop_app_refactored/providers/auth.dart';
 import 'package:flutter_shop_app_refactored/screens/auth/authCubit.dart';
 import 'package:flutter_shop_app_refactored/screens/auth/authState.dart';
 import 'package:flutter_shop_app_refactored/screens/product_detail_screen.dart';
