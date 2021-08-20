@@ -16,7 +16,7 @@ import 'package:flutter_shop_app_refactored/screens/ProductType.dart';
 import 'package:flutter_shop_app_refactored/screens/auth/authCubit.dart';
 import 'package:flutter_shop_app_refactored/screens/auth/authState.dart';
 import 'package:flutter_shop_app_refactored/screens/auth/auth_screen.dart';
-import 'package:flutter_shop_app_refactored/screens/profil.dart';
+import 'package:flutter_shop_app_refactored/screens/profile/profil.dart';
 import 'package:flutter_shop_app_refactored/screens/types.dart';
 import 'package:flutter_shop_app_refactored/style.dart';
 import 'package:provider/provider.dart';
@@ -44,8 +44,6 @@ class MyApp extends StatelessWidget {
         BlocProvider(
             create: (context) => HomeCubit(InitializedState())..getHomeData()),
         BlocProvider(create: (context) => CartCubit(initialCartState())),
-
-        //    BlocProvider(create: (context) => ProductCubit(InitialState())),
       ],
       child: BlocConsumer<ShopLoginCubit, ShopLoginStates>(
         listener: (ctx, state) {},

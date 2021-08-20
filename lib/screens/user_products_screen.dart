@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_shop_app_refactored/screens/favorites.dart/Favorits.dart';
 import 'package:flutter_shop_app_refactored/screens/OverView.dart';
-import 'package:flutter_shop_app_refactored/screens/profil.dart';
+import 'package:flutter_shop_app_refactored/screens/profile/profil.dart';
 import 'package:provider/provider.dart';
 
 import './edit_product_screen.dart';
@@ -78,7 +78,7 @@ class _UserProductsScreenState extends State<UserProductsScreen> {
       });
     }
 
-    var productsData  ;//=
+    var productsData; //=
     print('rebilding....');
     return Scaffold(
         drawer: AppDrawer(),

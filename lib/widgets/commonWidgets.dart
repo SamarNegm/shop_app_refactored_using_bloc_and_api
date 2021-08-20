@@ -20,17 +20,18 @@ void showErrorDialog(String message, BuildContext context) {
   );
 }
 
-Widget CustomInputFilde(String lable) {
-  return Padding(
-    padding: const EdgeInsets.all(15.0),
-    child: Row(
-      children: [
-        Text(lable, style: TextStyle(color: thierdltColor, fontSize: 14)),
-        Spacer(),
-        Card(
+Widget CustomInputFilde(String lable, dynamic devicesize) {
+  return Row(
+    children: [
+      Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Text(lable),
+      ),
+      Expanded(
+        child: Card(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(30))),
-          elevation: 4,
+          elevation: 1,
           shadowColor: Colors.black,
           color: Color(0xffF4F4F4),
           child: Padding(
@@ -38,7 +39,7 @@ Widget CustomInputFilde(String lable) {
             child: TextField(
               decoration: InputDecoration(
                 counterStyle: TextStyle(fontSize: 20, color: Color(0xff707070)),
-                labelText: lable,
+
                 fillColor: Color(0xffF4F4F4),
                 // border: OutlineInputBorder(
                 //     borderRadius:
@@ -49,7 +50,7 @@ Widget CustomInputFilde(String lable) {
             ),
           ),
         ),
-      ],
-    ),
+      ),
+    ],
   );
 }

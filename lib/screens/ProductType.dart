@@ -3,7 +3,7 @@ import 'package:flutter_shop_app_refactored/screens/OverView.dart';
 import 'package:flutter_shop_app_refactored/screens/ProductOverView.dart';
 import 'package:flutter_shop_app_refactored/screens/edit_product_screen.dart';
 import 'package:flutter_shop_app_refactored/screens/favorites.dart/Favorits.dart';
-import 'package:flutter_shop_app_refactored/screens/profil.dart';
+import 'package:flutter_shop_app_refactored/screens/profile/profil.dart';
 import 'package:flutter_shop_app_refactored/widgets/app_drawer.dart';
 import 'package:hexcolor/hexcolor.dart';
 

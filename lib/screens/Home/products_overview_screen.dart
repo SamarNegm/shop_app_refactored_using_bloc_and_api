@@ -33,37 +33,8 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
       builder: (context, state) {
         var cubit = HomeCubit.get(context);
         return Scaffold(
-          appBar: PreferredSize(
-            preferredSize: Size.fromHeight(kToolbarHeight),
-            child: ClipRRect(
-              borderRadius:
-                  BorderRadius.only(bottomRight: Radius.circular(40.0)),
-              child: AppBar(
-                backgroundColor: HexColor('#f1d2c5'),
-                actions: <Widget>[
-                  IconButton(
-                    icon: Icon(
-                      Icons.shopping_cart,
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).pushNamed(CartScreen.routeName);
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ),
           drawer: AppDrawer(),
           body: cubit.pages[cubit.selectedPageIndex],
-          floatingActionButton: FloatingActionButton(
-            backgroundColor: Theme.of(context).primaryColor,
-            elevation: 4.0,
-            child: Icon(Icons.add),
-            onPressed: () {
-              Navigator.of(context).pushNamed(EditProductScreen.routeName);
-            },
-          ),
-          floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
           bottomNavigationBar: ClipRRect(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(40),

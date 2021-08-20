@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_shop_app_refactored/screens/profil.dart';
+import 'package:flutter_shop_app_refactored/screens/profile/profil.dart';
 
 class EditProfile extends StatefulWidget {
   static const routeName = '/Editprofile';
