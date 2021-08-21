@@ -11,7 +11,6 @@ import 'package:flutter_shop_app_refactored/screens/favorites.dart/Favorits.dart
 import 'package:flutter_shop_app_refactored/screens/profile/profil.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  var showOnlyFavorites = false;
   List<ProductModel> productsData = [];
   List<ProductModel> favData = [];
   List<ProductModel> CartData = [];
@@ -69,12 +68,6 @@ class HomeCubit extends Cubit<HomeState> {
   Future<void> selectPage(int index) async {
     selectedPageIndex = index;
     print(selectedPageIndex);
-
-    if (selectedPageIndex == 1) {
-      showOnlyFavorites = true;
-    } else {
-      showOnlyFavorites = false;
-    }
   }
 
   void changeNavBar(int index) {

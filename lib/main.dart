@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_shop_app_refactored/network/local/cache_helper.dart';
 import 'package:flutter_shop_app_refactored/network/remote/DioHelper.dart';
+import 'package:flutter_shop_app_refactored/providers/bottomNavigationBarProvider.dart';
 import 'package:flutter_shop_app_refactored/screens/Cart/CartCubit.dart';
 import 'package:flutter_shop_app_refactored/screens/Cart/CartState.dart';
 import 'package:flutter_shop_app_refactored/screens/CreditCard.dart';
@@ -44,6 +45,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(
             create: (context) => HomeCubit(InitializedState())..getHomeData()),
         BlocProvider(create: (context) => CartCubit(initialCartState())),
+        ChangeNotifierProvider(
+            create: (context) => BottomNavigationBarProvider())
       ],
       child: BlocConsumer<ShopLoginCubit, ShopLoginStates>(
         listener: (ctx, state) {},
