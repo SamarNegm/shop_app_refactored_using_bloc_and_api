@@ -34,6 +34,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
 
     return Consumer<BottomNavigationBarProvider>(
         builder: (ctx, p, _) => Scaffold(
+              resizeToAvoidBottomInset: false,
               body: Provider.of<BottomNavigationBarProvider>(context)
                   .pages[selectedPageIndex],
             ));

@@ -1,7 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_shop_app_refactored/models/users.dart';
 import 'package:flutter_shop_app_refactored/providers/bottomNavigationBarProvider.dart';
+import 'package:flutter_shop_app_refactored/screens/profile/ProfileCubit.dart';
+import 'package:flutter_shop_app_refactored/screens/profile/ProfileState.dart';
 import 'package:flutter_shop_app_refactored/style.dart';
 import 'package:flutter_shop_app_refactored/widgets/commonWidgets.dart';
 import 'package:flutter_shop_app_refactored/widgets/user_product_item2.dart';
@@ -34,121 +38,181 @@ class _profileState extends State<profile> {
     final devicesize = MediaQuery.of(context).size;
     return Consumer<BottomNavigationBarProvider>(
         builder: (ctx, p, _) => Scaffold(
+              resizeToAvoidBottomInset: false,
               body: SingleChildScrollView(
                 child: SizedBox(
                   height: devicesize.height,
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: devicesize.height * .15,
-                        child: Container(
-                          child: Image(
-                              image: AssetImage('assets/images/profile.png')),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(30.0),
-                        child: Text(
-                          'Eman Salah',
-                          style: TextStyle(
-                            color: thierdltColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 28,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 50,
-                      ),
-                      SizedBox(
-                        height: devicesize.height * .52,
-                        width: double.infinity,
-                        child: Stack(
-                          children: [
-                            Column(
+                  child: BlocConsumer<ProfileCubit, profileState>(
+                    listener: (context, state) {
+                      // TODO: implement listener
+                    },
+                    builder: (context, state) {
+                      var cubit = ProfileCubit.get(context);
+
+                      return state is LoadingState
+                          ? Center(child: CircularProgressIndicator())
+                          : Column(
                               children: [
+                                SizedBox(
+                                  height: devicesize.height * .15,
+                                  child: Container(
+                                    child: Image(
+                                        image: AssetImage(
+                                            'assets/images/profile.png')),
+                                  ),
+                                ),
                                 Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 20),
-                                  child: Center(
-                                    child: SizedBox(
-                                        height: devicesize.height * .5,
-                                        width: double.infinity,
-                                        child: Card(
-                                          elevation: 5,
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(30))),
-                                          color: backgroundColor,
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            children: [
-                                              Row(
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            12),
-                                                    child: Text(
-                                                      'Your info',
-                                                      style: TextStyle(
-                                                          color: thierdltColor,
-                                                          fontSize: 24,
-                                                          fontWeight:
-                                                              FontWeight.bold),
+                                  padding: const EdgeInsets.all(30.0),
+                                  child: Text(
+                                    cubit.CurrentUser.name,
+                                    style: TextStyle(
+                                      color: thierdltColor,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 28,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 50,
+                                ),
+                                SizedBox(
+                                  height: devicesize.height * .52,
+                                  width: double.infinity,
+                                  child: Stack(
+                                    children: [
+                                      Column(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 20),
+                                            child: Center(
+                                              child: SizedBox(
+                                                  height:
+                                                      devicesize.height * .5,
+                                                  width: double.infinity,
+                                                  child: Card(
+                                                    elevation: 5,
+                                                    shape: RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius.all(
+                                                                Radius.circular(
+                                                                    30))),
+                                                    color: backgroundColor,
+                                                    child:
+                                                        SingleChildScrollView(
+                                                      child: Column(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Row(
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                        .all(12),
+                                                                child: Text(
+                                                                  'Your info',
+                                                                  style: TextStyle(
+                                                                      color:
+                                                                          thierdltColor,
+                                                                      fontSize:
+                                                                          24,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold),
+                                                                ),
+                                                              ),
+                                                              Spacer(),
+                                                              Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .all(
+                                                                        8.0),
+                                                                child: Icon(
+                                                                    Icons.edit),
+                                                              )
+                                                            ],
+                                                          ),
+                                                          Divider(),
+                                                          Form(
+                                                            key: cubit.formKey,
+                                                            child: Column(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .center,
+                                                              children: [
+                                                                CustomInputFilde(
+                                                                    'Name',
+                                                                    cubit
+                                                                        .CurrentUser
+                                                                        .name,
+                                                                    devicesize,
+                                                                    cubit
+                                                                        .nameController,
+                                                                    context),
+                                                                CustomInputFilde(
+                                                                    'Email',
+                                                                    cubit
+                                                                        .CurrentUser
+                                                                        .email,
+                                                                    devicesize,
+                                                                    cubit
+                                                                        .emailController,
+                                                                    context),
+                                                                CustomInputFilde(
+                                                                    'Phone',
+                                                                    cubit
+                                                                        .CurrentUser
+                                                                        .phone,
+                                                                    devicesize,
+                                                                    cubit
+                                                                        .phoneController,
+                                                                    context),
+                                                                CustomInputFilde(
+                                                                    'Address',
+                                                                    'Cairo Egypt ',
+                                                                    devicesize,
+                                                                    cubit
+                                                                        .adreessController,
+                                                                    context)
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          SizedBox(
+                                                            height: 50,
+                                                          ),
+                                                        ],
+                                                      ),
                                                     ),
-                                                  ),
-                                                  Spacer(),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            8.0),
-                                                    child: Icon(Icons.edit),
-                                                  )
-                                                ],
-                                              ),
-                                              Divider(),
-                                              Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  CustomInputFilde(
-                                                      'Name', devicesize),
-                                                  CustomInputFilde(
-                                                      'Email', devicesize),
-                                                  CustomInputFilde(
-                                                      'Phone', devicesize),
-                                                  CustomInputFilde(
-                                                      'Address', devicesize)
-                                                ],
-                                              ),
-                                              SizedBox(
-                                                height: 50,
-                                              ),
-                                            ],
+                                                  )),
+                                            ),
                                           ),
-                                        )),
+                                        ],
+                                      ),
+                                      Align(
+                                          alignment: Alignment.bottomCenter,
+                                          child: FloatingActionButton(
+                                            onPressed: () {
+                                              print(cubit.nameController.text
+                                                  .toString());
+                                              cubit.save();
+                                            },
+                                            child: Text(
+                                              'Ok',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 16),
+                                            ),
+                                            backgroundColor: thierdltColor,
+                                          )),
+                                    ],
                                   ),
                                 ),
                               ],
-                            ),
-                            Align(
-                                alignment: Alignment.bottomCenter,
-                                child: FloatingActionButton(
-                                  onPressed: () {},
-                                  child: Text(
-                                    'Ok',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 16),
-                                  ),
-                                  backgroundColor: thierdltColor,
-                                )),
-                          ],
-                        ),
-                      ),
-                    ],
+                            );
+                    },
                   ),
                 ),
               ),

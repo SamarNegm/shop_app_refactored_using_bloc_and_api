@@ -6,7 +6,7 @@ import 'package:flutter_shop_app_refactored/network/end_points.dart';
 import 'package:flutter_shop_app_refactored/network/local/cache_helper.dart';
 import 'package:flutter_shop_app_refactored/network/remote/DioHelper.dart';
 import 'package:flutter_shop_app_refactored/screens/Home/HomeState.dart';
-import 'package:flutter_shop_app_refactored/screens/OverView.dart';
+import 'package:flutter_shop_app_refactored/screens/Home/OverView.dart';
 import 'package:flutter_shop_app_refactored/screens/favorites.dart/Favorits.dart';
 import 'package:flutter_shop_app_refactored/screens/profile/profil.dart';
 

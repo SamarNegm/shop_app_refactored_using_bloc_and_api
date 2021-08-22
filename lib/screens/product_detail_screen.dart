@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_shop_app_refactored/models/ProductModel.dart';
+import 'package:flutter_shop_app_refactored/screens/Cart/CartCubit.dart';
+import 'package:flutter_shop_app_refactored/screens/Cart/CartState.dart';
 import 'package:flutter_shop_app_refactored/screens/Cart/cart_screen.dart';
 import 'package:flutter_shop_app_refactored/screens/Home/HomeState.dart';
 import 'package:flutter_shop_app_refactored/screens/Home/homeCubit.dart';
@@ -278,31 +280,35 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                           vertical: 15, horizontal: 30),
-                      child: RaisedButton(
-                        child: Text(
-                          'Add to chart',
-                          style: TextStyle(color: Colors.black, fontSize: 24),
-                        ),
-                        onPressed: () {
-                          print(totalPrice);
-                          cart.addItem(
-                              loadedProduct.id,
-                              totalPrice,
-                              loadedProduct.name,
-                              itemCount,
-                              loadedProduct.image);
-                          setState(() {
-                            added = true;
-                          });
+                      child: BlocConsumer<CartCubit, CartState>(
+                        listener: (context, state) {
+                          // TODO: implement listener
                         },
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 30.0, vertical: 8.0),
-                        color: Theme.of(context).primaryColor,
-                        textColor:
-                            Theme.of(context).primaryTextTheme.button.color,
+                        builder: (context, state) {
+                          var cubit = CartCubit.get(context);
+                          return RaisedButton(
+                            child: Text(
+                              'Add To Chart',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 24),
+                            ),
+                            onPressed: () {
+                              print(totalPrice);
+                              cubit.ToggelCart(loadedProduct);
+                              setState(() {
+                                added = true;
+                              });
+                            },
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 30.0, vertical: 8.0),
+                            color: Theme.of(context).primaryColor,
+                            textColor:
+                                Theme.of(context).primaryTextTheme.button.color,
+                          );
+                        },
                       ),
                     ),
                   ),
